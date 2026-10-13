@@ -224,7 +224,6 @@ class Downlink:
         # AN ASSUMPTION MADE HERE IS THAT THE EFFICIENCY FOR TRANSMITTER AND RECEIVER
         # ANTENNAS ARE THE SAME FOR BOTH DOWNLINK AND UPLINK (i.e. independent of mode)
         transmission_gain = self.calculate_transmission_gain(mode)
-        print(f"Transmission gain: {transmission_gain} dBi" )
         eirp_dBW = transmission_power_dBW + transmission_gain - tx_loss_dB
         print(f"Effective isotropically radiated power (EIRP) : {eirp_dBW} dBW" )
         return eirp_dBW

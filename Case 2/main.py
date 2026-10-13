@@ -32,7 +32,7 @@ MU_EARTH = 3.986004418e14        # m^3/s^2
 R_EARTH = 6371.0                 # km
 
 margin, status = link.calculate_link_margin(
-    mode="uplink",             # "downlink" or "uplink"
+    mode="downlink",             # "downlink" or "uplink"
     type="Lunar Orbit",          # "Earth Orbit", "Lunar Orbit", or anything else for interplanetary
     d_S=149597870.7,             # km, spacecraft/planet to Sun distance (interplanetary only)
     mu=MU_EARTH,
