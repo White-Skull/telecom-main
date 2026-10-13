@@ -56,7 +56,7 @@ If this prints a version number, you are ready to go.
 
 ## Usage
 
-Place `payload.py` and `telecom.py` in the same folder (`telecom.py` does `from payload import Payload`). A template for the main folder is then given as:
+Place `payload.py` and `telecom.py` in the same folder (`telecom.py` does `from payload import Payload`). A template for the main parameter file is then given as:
 
 ```python
 from payload import Payload
