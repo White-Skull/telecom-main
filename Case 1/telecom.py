@@ -213,14 +213,17 @@ class Downlink:
         f, tx_power, d_tx, d_rx = self.get_rf_params(mode)
 
         transmission_power_dBW = 10 * np.log10(tx_power)
-
+        print(f"Transmission power: {transmission_power_dBW} dBW" )
         # convert tx_loss in dB
         tx_loss_dB = -10 * np.log10(
             self.tx_loss
-        )  # self.tx_loss < 1 and thus -10*log10(self.tx_loss) = +0.969 dB
+        )  
+        print(f"Transmitter loss: {tx_loss_dB} dB" )
+        # self.tx_loss < 1 and thus -10*log10(self.tx_loss) = +0.969 dB
         # AN ASSUMPTION MADE HERE IS THAT THE EFFICIENCY FOR TRANSMITTER AND RECEIVER
         # ANTENNAS ARE THE SAME FOR BOTH DOWNLINK AND UPLINK (i.e. independent of mode)
         transmission_gain = self.calculate_transmission_gain(mode)
+        print(f"Transmission gain: {transmission_gain} dBi" )
         eirp_dBW = transmission_power_dBW + transmission_gain - tx_loss_dB
         print(f"Effective isotropically radiated power (EIRP) : {eirp_dBW} dBW" )
         return eirp_dBW
@@ -370,18 +373,19 @@ class Downlink:
         cn0 = self.calculate_c_over_n0(mode, type, d_S)
         r_req = self.determine_data_rate(mu, body_radius, mode)
 
-        # covert data rate to dB
+        # convert data rate to dB
         R_dB = 10 * np.log10(r_req)
 
         # calculate eb_over_n0 in dB
         eb_over_n0 = cn0 - R_dB
-        print(f"Required data rate: {R_dB} dB" )
+        print(f"Required data rate: {R_dB} dB-bps" )
         print(f"Eb/N0: {eb_over_n0} dB" )
         return eb_over_n0
 
     def calc_req_eb_over_n0(self):
         Q_inv = np.sqrt(2) * erfinv(1.0 - 2.0 * self.required_bit_error_rate)
         req_eb_over_n0 = 10 * np.log10((Q_inv**2)/2 )
+        print(f"Required Eb/N0: {req_eb_over_n0} dB" )
         return req_eb_over_n0
     
     def calculate_link_margin(
