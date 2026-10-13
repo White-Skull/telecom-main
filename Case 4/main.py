@@ -3,27 +3,27 @@ from telecom import Downlink
 
 # 1. Describe the payload
 payload = Payload(
-    swath_width_angle=10,   # deg
-    pixel_size=0.1,         # arcmin
+    swath_width_angle=0.5,   # deg
+    pixel_size=0.05,         # arcmin
     bits_per_pixel=8,
-    duty_cycle=0.3,         # fraction of the orbit the instrument is on
-    downlink_time=4,        # hours per day available for downlink
+    duty_cycle=0.1,         # fraction of the orbit the instrument is on
+    downlink_time=12,        # hours per day available for downlink
 )
 
 # 2. Describe the link
 link = Downlink(
-    f_downlink=8.2,              # GHz
-    sc_tx_power=200,              # W
-    gs_tx_power=100,             # W
-    sc_antenna_diameter=0.5,     # m
-    gs_antenna_diameter=3.0,     # m
-    turn_around_ratio=221 / 240,
-    orbit_altitude=500,          # km
-    elongation_angle=0,          # deg (only used for interplanetary missions)
-    pointing_offset_angle=0.1,   # deg
-    required_uplink_dr=2000,     # bps
+    f_downlink=8.4,              # GHz
+    sc_tx_power=100,              # W
+    gs_tx_power=1000,             # W
+    sc_antenna_diameter=3,     # m
+    gs_antenna_diameter=35,     # m
+    turn_around_ratio=749 / 880,
+    orbit_altitude=300,          # km
+    elongation_angle=150,          # deg (only used for interplanetary missions)
+    pointing_offset_angle=0.05,   # deg
+    required_uplink_dr=1e6,     # bps
     payload=payload,
-    required_bit_error_rate=1e-5,
+    required_bit_error_rate=1e-6,
     elevation_angle=10,          # deg (default)
 )
 
