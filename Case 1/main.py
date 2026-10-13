@@ -1,0 +1,46 @@
+from payload import Payload
+from telecom import Downlink
+
+# 1. Describe the payload
+payload = Payload(
+    swath_width_angle=45,   # deg
+    pixel_size=0.01,         # arcmin
+    bits_per_pixel=32,
+    duty_cycle=1,         # fraction of the orbit the instrument is on
+    downlink_time=0.5,        # hours per day available for downlink
+)
+
+# 2. Describe the link
+link = Downlink(
+    f_downlink=2.2,              # GHz
+    sc_tx_power=150,              # W
+    gs_tx_power=400,             # W
+    sc_antenna_diameter=1,     # m
+    gs_antenna_diameter=15,     # m
+    turn_around_ratio=221 / 240,
+    orbit_altitude=820,          # km
+    elongation_angle=0,          # deg (only used for interplanetary missions)
+    pointing_offset_angle=0.12,   # deg
+    required_uplink_dr=1e8,     # bps
+    payload=payload,
+    required_bit_error_rate=1e-6,
+    elevation_angle=10,          # deg (default)
+)
+
+# 3. Compute the link margin
+MU_EARTH = 3.986004418e14        # m^3/s^2
+R_EARTH = 6371.0                 # km
+
+margin, status = link.calculate_link_margin(
+    mode="uplink",             # "downlink" or "uplink"
+    type="Earth Orbit",          # "Earth Orbit", "Lunar Orbit", or anything else for interplanetary
+    d_S=149597870.7,             # km, spacecraft/planet to Sun distance (interplanetary only)
+    mu=MU_EARTH,
+    body_radius=R_EARTH,
+    eb_n0_threshold_dB= link.calc_req_eb_over_n0()
+)
+
+
+
+print(f"Link margin: {margin:.2f} dB")
+print(status)
