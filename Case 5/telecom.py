@@ -382,6 +382,7 @@ class Downlink:
     def calc_req_eb_over_n0(self):
         Q_inv = np.sqrt(2) * erfinv(1.0 - 2.0 * self.required_bit_error_rate)
         req_eb_over_n0 = 10 * np.log10((Q_inv**2)/2 )
+        print(f"Required Eb/N0: {req_eb_over_n0} dB" )
         return req_eb_over_n0
     
     def calculate_link_margin(
