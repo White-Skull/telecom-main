@@ -270,6 +270,7 @@ class Downlink:
 
         # STEP 4: Calculate G/T
         g_over_t = reception_gain - 10 * np.log10(T_sys)
+        print(f"System noise temperature: {10*np.log10(T_sys)} dB-K")
         print(f"g over t: {g_over_t} dB/K" )
         return g_over_t
 
