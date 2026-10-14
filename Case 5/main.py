@@ -3,10 +3,10 @@ from telecom import Downlink
 
 # 1. Describe the payload
 payload = Payload(
-    swath_width_angle=10,   # deg
+    swath_width_angle=1.47,   # deg
     pixel_size=0.05,         # arcmin
     bits_per_pixel=8,
-    duty_cycle=0.4,         # fraction of the orbit the instrument is on
+    duty_cycle=0.0204,         # fraction of the orbit the instrument is on
     downlink_time=18,        # hours per day available for downlink
 )
 
@@ -37,7 +37,7 @@ margin, status = link.calculate_link_margin(
     d_S=0.308*149597870.7,             # km, spacecraft/planet to Sun distance (interplanetary only)
     mu=MU_EARTH,
     body_radius=R_EARTH,
-    eb_n0_threshold_dB= link.calc_req_eb_over_n0()
+    eb_n0_threshold_dB= 2.5
 )
 
 

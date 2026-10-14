@@ -12,7 +12,7 @@ payload = Payload(
 
 # 2. Describe the link
 link = Downlink(
-    f_downlink=2.2,              # GHz
+    f_downlink=8.025,              # GHz
     sc_tx_power=150,              # W
     gs_tx_power=400,             # W
     sc_antenna_diameter=1,     # m

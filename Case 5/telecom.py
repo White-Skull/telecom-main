@@ -415,7 +415,7 @@ class Downlink:
             statement = "STATUS: PASSED (Link Budget can be closed)"
         else:
             statement = (
-                f"STATUS: FAILED (Deficit of {round(abs(link_margin), 2)} dB). "
+                f"STATUS: FAILED (Deficit of {round(abs(link_margin-3), 2)} dB). "
                 "Consider changing the transmitter power or using a more powerful antenna."
             )
 
