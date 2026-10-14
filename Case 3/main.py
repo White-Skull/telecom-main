@@ -33,12 +33,15 @@ link = Downlink(
 MU_EARTH = 3.986004418e14        # m^3/s^2
 R_EARTH = 6371.0                 # km
 
+MU_MARS = 4.28283744e13       # m^3/s^2
+R_MARS = 3389.5                 # km
+
 margin, status = link.calculate_link_margin(
     mode="downlink",             # "downlink" or "uplink"
     type="Mars",          # "Earth Orbit", "Lunar Orbit", or anything else for interplanetary
     d_S=1.524 * 149597870.7,             # km, spacecraft/planet to Sun distance (interplanetary only)
-    mu=MU_EARTH,
-    body_radius=R_EARTH,
+    mu=MU_MARS,
+    body_radius=R_MARS,
     eb_n0_threshold_dB= link.calc_req_eb_over_n0()
 )
 
