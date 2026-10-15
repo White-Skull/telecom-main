@@ -12,7 +12,7 @@ payload = Payload(
 
 # 2. Describe the link
 link = Downlink(
-    f_downlink=2.2,              # GHz
+    f_downlink=8.025,              # GHz
     sc_tx_power=150,              # W
     gs_tx_power=400,             # W
     sc_antenna_diameter=1,     # m
@@ -32,7 +32,7 @@ MU_EARTH = 3.986004418e14        # m^3/s^2
 R_EARTH = 6371.0                 # km
 
 margin, status = link.calculate_link_margin(
-    mode="downlink",             # "downlink" or "uplink"
+    mode="uplink",             # "downlink" or "uplink"
     type="Earth Orbit",          # "Earth Orbit", "Lunar Orbit", or anything else for interplanetary
     d_S=149597870.7,             # km, spacecraft/planet to Sun distance (interplanetary only)
     mu=MU_EARTH,

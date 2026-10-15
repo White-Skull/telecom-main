@@ -271,6 +271,7 @@ class Downlink:
 
         # STEP 4: Calculate G/T
         g_over_t = reception_gain - 10 * np.log10(T_sys)
+        print(f"System noise temperature: {10*np.log10(T_sys)} dB-K")
         print(f"g over t: {g_over_t} dB/K" )
         return g_over_t
 
@@ -415,7 +416,7 @@ class Downlink:
             statement = "STATUS: PASSED (Link Budget can be closed)"
         else:
             statement = (
-                f"STATUS: FAILED (Deficit of {round(abs(link_margin), 2)} dB). "
+                f"STATUS: FAILED (Deficit of {round(abs(link_margin-3), 2)} dB). "
                 "Consider changing the transmitter power or using a more powerful antenna."
             )
 
