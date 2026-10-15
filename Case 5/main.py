@@ -3,10 +3,10 @@ from telecom import Downlink
 
 # 1. Describe the payload
 payload = Payload(
-    swath_width_angle=10,   # deg
+    swath_width_angle=1.47,   # deg
     pixel_size=0.05,         # arcmin
     bits_per_pixel=8,
-    duty_cycle=0.4,         # fraction of the orbit the instrument is on
+    duty_cycle=0.0255,         # fraction of the orbit the instrument is on
     downlink_time=18,        # hours per day available for downlink
 )
 
@@ -35,12 +35,12 @@ MU_MERCURY = 2.2032e13       # m^3/s^2
 R_MERCURY = 2439.7                 # km
 
 margin, status = link.calculate_link_margin(
-    mode="downlink",             # "downlink" or "uplink"
+    mode="uplink",             # "downlink" or "uplink"
     type="Mercury",          # "Earth Orbit", "Lunar Orbit", or anything else for interplanetary
     d_S=0.308*149597870.7,             # km, spacecraft/planet to Sun distance (interplanetary only)
     mu=MU_MERCURY,
     body_radius=R_MERCURY,
-    eb_n0_threshold_dB= link.calc_threshold_eb_n0()
+    eb_n0_threshold_dB= 1.0
 )
 
 

@@ -3,18 +3,18 @@ from telecom import Downlink
 
 # 1. Describe the payload
 payload = Payload(
-    swath_width_angle=0.5,   # deg
+    swath_width_angle=0.229,   # deg
     pixel_size=0.05,         # arcmin
     bits_per_pixel=8,
-    duty_cycle=0.1,         # fraction of the orbit the instrument is on
+    duty_cycle=0.044,         # fraction of the orbit the instrument is on
     downlink_time=12,        # hours per day available for downlink
 )
 
 # 2. Describe the link
 link = Downlink(
     f_downlink=8.4,              # GHz
-    sc_tx_power=100,              # W
-    gs_tx_power=1000,             # W
+    sc_tx_power=200,              # W
+    gs_tx_power=4000,             # W
     sc_antenna_diameter=3,     # m
     gs_antenna_diameter=35,     # m
     turn_around_ratio=749 / 880,
@@ -40,7 +40,7 @@ margin, status = link.calculate_link_margin(
     d_S=1.524 * 149597870.7,             # km, spacecraft/planet to Sun distance (interplanetary only)
     mu=MU_MARS,
     body_radius=R_MARS,
-    eb_n0_threshold_dB= link.calc_req_eb_over_n0()
+    eb_n0_threshold_dB= 1.0
 )
 
 
