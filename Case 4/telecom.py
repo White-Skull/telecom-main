@@ -384,13 +384,14 @@ class Downlink:
         return eb_over_n0
 
     def calc_req_eb_over_n0(self):
+        #calculate required Eb/N0 based on the required bit error rate
         Q_inv = np.sqrt(2) * erfinv(1.0 - 2.0 * self.required_bit_error_rate)
         req_eb_over_n0 = 10 * np.log10((Q_inv**2)/2 )
         print(f"Required Eb/N0: {req_eb_over_n0} dB" )
         return req_eb_over_n0
     
     def calculate_link_margin(
-        self, mode, type, d_S, mu, body_radius, eb_n0_threshold_dB=3.0
+        self, mode, type, d_S, mu, body_radius, eb_n0_threshold_dB
     ):
         """Calculates the Link Margin
 
